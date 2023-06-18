@@ -9,7 +9,7 @@ import GoogleLogin from '../../../components/GoogleLogin';
 
 const SignIn = () => {
   const onSignUp = () => {
-    console.log('Hello');
+    console.log('HOLA');
   };
   return (
     <ScrollView style={styles.container}>
