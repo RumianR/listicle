@@ -2,10 +2,29 @@ import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 import {styles} from './styles';
 import Button from '../../../components/Button';
+import RootStackParamList from '../../../navigation';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {ScreenNames} from '../../../utils/routes';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-const Splash = () => {
+type SplashScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  ScreenNames.Splash
+>;
+
+type Props = {
+  navigation: SplashScreenNavigationProp;
+};
+
+const Splash = ({navigation}: Props) => {
+  const onSignup = () => {
+    navigation.navigate(ScreenNames.SignUp);
+  };
+  const onSignin = () => {
+    navigation.navigate(ScreenNames.SignIn);
+  };
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image
         source={require('../../../assets/splash_image.png')}
         style={styles.image}
@@ -16,16 +35,14 @@ const Splash = () => {
         <Text style={styles.title}> Here!</Text>
       </View>
 
-      <Button
-        title="Sign Up"
-        onPress={() => {
-          console.log('button clicked');
-        }}></Button>
+      <Button title="Sign Up" onPress={onSignup}></Button>
       <Pressable hitSlop={20}>
-        <Text style={styles.footerText}>Sign In</Text>
+        <Text onPress={onSignin} style={styles.footerText}>
+          Sign In
+        </Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default Splash;
+export default React.memo(Splash);

@@ -18,7 +18,7 @@ const Button = ({
 }: {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }) => {
   return (
     <View>
