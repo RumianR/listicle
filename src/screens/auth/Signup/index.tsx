@@ -7,38 +7,64 @@ import Input from '../../../components/Input';
 import Checkbox from '../../../components/Checkbox';
 import Seperator from '../../../components/Seperator';
 import GoogleLogin from '../../../components/GoogleLogin';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import RootStackParamList from '../../../navigation';
+import {ScreenNames} from '../../../utils/routes';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-const Signup = () => {
+type SignUpScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  ScreenNames.SignUp
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+
+const Signup = ({navigation}: Props) => {
   const [checked, setChecked] = useState(false);
 
-  const onSignIn = () => {
-    console.log('Hello');
+  const onSignin = () => {
+    navigation.navigate(ScreenNames.SignIn);
   };
-  return (
-    <ScrollView style={styles.container}>
-      <AuthHeader title="Sign Up" onBackPress={() => {}}></AuthHeader>
-      <Input label="Name" placeholder="John Doe"></Input>
-      <Input label="Email" placeholder="example@gmail.com"></Input>
-      <Input label="Password" isPassword={true} placeholder="*********"></Input>
-      <View style={styles.agreeRow}>
-        <Checkbox checked={checked} onCheck={setChecked}></Checkbox>
-        <Text style={styles.agreeText}>
-          I agree with <Text style={styles.agreeTextBold}>Terms</Text> &{' '}
-          <Text style={styles.agreeTextBold}>Privacy</Text>
-        </Text>
-      </View>
 
-      <Button style={styles.button} onPress={() => {}} title="Sign Up"></Button>
-      <Seperator title="Or sign up with"></Seperator>
-      <GoogleLogin></GoogleLogin>
-      <Text style={styles.footerText}>
-        Already have an account?
-        <Text onPress={onSignIn} style={styles.footerLink}>
-          {' '}
-          Sign In
+  const onBack = () => {
+    navigation.goBack();
+  };
+
+  return (
+    <SafeAreaView>
+      <ScrollView style={styles.container}>
+        <AuthHeader title="Sign Up" onBackPress={onBack}></AuthHeader>
+        <Input label="Name" placeholder="John Doe"></Input>
+        <Input label="Email" placeholder="example@gmail.com"></Input>
+        <Input
+          label="Password"
+          isPassword={true}
+          placeholder="*********"></Input>
+        <View style={styles.agreeRow}>
+          <Checkbox checked={checked} onCheck={setChecked}></Checkbox>
+          <Text style={styles.agreeText}>
+            I agree with <Text style={styles.agreeTextBold}>Terms</Text> &{' '}
+            <Text style={styles.agreeTextBold}>Privacy</Text>
+          </Text>
+        </View>
+
+        <Button
+          style={styles.button}
+          onPress={() => {}}
+          title="Sign Up"></Button>
+        <Seperator title="Or sign up with"></Seperator>
+        <GoogleLogin></GoogleLogin>
+        <Text style={styles.footerText}>
+          Already have an account?
+          <Text onPress={onSignin} style={styles.footerLink}>
+            {' '}
+            Sign In
+          </Text>
         </Text>
-      </Text>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
