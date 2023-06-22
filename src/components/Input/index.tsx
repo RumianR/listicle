@@ -14,10 +14,14 @@ import {styles} from './styles';
 const Input = ({
   label,
   placeholder,
+  value,
+  onChangeText,
   isPassword = false,
 }: {
   label: string;
   placeholder: string;
+  value?: string;
+  onChangeText?: ((text: string) => void) | undefined;
   isPassword?: boolean;
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -31,6 +35,8 @@ const Input = ({
       <Text style={styles.label}>{label}</Text>
       <View style={styles.inputContainer}>
         <TextInput
+          value={value}
+          onChangeText={onChangeText}
           secureTextEntry={isPassword && !isPasswordVisible}
           placeholder={placeholder}
           style={styles.input}></TextInput>
