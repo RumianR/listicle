@@ -9,7 +9,7 @@ import GoogleLogin from '../../../components/GoogleLogin';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import RootStackParamList from '../../../navigation';
 import {ScreenNames} from '../../../utils/routes';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import Header from '../../../components/Header';
 import {Category, categories} from '../../../data/categories';
 import CategoryBox from '../../../components/CategoryBox';
@@ -31,6 +31,7 @@ const Home = ({navigation}: Props) => {
   const [selectedCategory, setSelectedCategory] = useState<number>();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [keyword, setKeyword] = useState<string>();
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     if (selectedCategory && !keyword) {
@@ -78,14 +79,15 @@ const Home = ({navigation}: Props) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container]}>
       <Header
         title="Find All You Need"
         showSearch
         onSearch={setKeyword}
         keyword={keyword}
+        style={styles.header}
       />
-      <View>
+      <View style={styles.top}>
         <FlatList
           style={styles.list}
           showsHorizontalScrollIndicator={false}
@@ -101,6 +103,9 @@ const Home = ({navigation}: Props) => {
         data={filteredProducts}
         renderItem={renderProductItem}
         keyExtractor={(item: Product, index: number) => item.id.toString()}
+        ListFooterComponent={
+          <View style={{height: 0, marginBottom: 200}}></View>
+        }
       />
     </SafeAreaView>
   );

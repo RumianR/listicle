@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, Text} from 'react-native';
+import {FlatList, ScrollView, Text, View} from 'react-native';
 import {styles} from './styles';
 import Button from '../../../components/Button';
 import AuthHeader from '../../../components/AuthHeader';
@@ -10,6 +10,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import RootStackParamList from '../../../navigation';
 import {ScreenNames} from '../../../utils/routes';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {Product, products} from '../../../data/products';
+import ProductHomeItem from '../../../components/ProductHomeItem';
+import FavoriteItem from '../../../components/FavoriteItem';
+import Header from '../../../components/Header';
 
 type FavoritesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -21,13 +25,22 @@ type Props = {
 };
 
 const Favorites = ({navigation}: Props) => {
+  const renderItem = ({item, index}: {item: Product; index: number}) => {
+    return <FavoriteItem {...item} onPress={() => {}}></FavoriteItem>;
+  };
   return (
-    <SafeAreaView>
-      <ScrollView style={styles.container}>
-        <Text>Favorites</Text>
-      </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <Header title="Favorites" />
+      <FlatList
+        data={products}
+        renderItem={renderItem}
+        keyExtractor={(item: Product) => item.id.toString()}
+        ListFooterComponent={
+          <View style={{height: 0, marginBottom: 200}}></View>
+        }
+      />
     </SafeAreaView>
   );
 };
 
-export default Favorites;
+export default React.memo(Favorites);

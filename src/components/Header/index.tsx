@@ -4,9 +4,11 @@ import {
   Image,
   NativeSyntheticEvent,
   Pressable,
+  StyleProp,
   Text,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 import {styles} from './styles';
 import Input from '../Input';
@@ -22,6 +24,7 @@ type Props = {
   logout?: {
     onPress: (event: GestureResponderEvent) => void;
   };
+  style?: StyleProp<ViewStyle>;
 };
 
 const Header = (props: Props) => {
