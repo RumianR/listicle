@@ -75,7 +75,14 @@ const Home = ({navigation}: Props) => {
   };
 
   const renderProductItem = ({item, index}: {item: Product; index: number}) => {
-    return <ProductHomeItem {...item} onPress={() => {}}></ProductHomeItem>;
+    const onProductPress = (product: Product) => {
+      navigation.navigate(ScreenNames.ProductDetails, {product});
+    };
+    return (
+      <ProductHomeItem
+        {...item}
+        onPress={() => onProductPress(item)}></ProductHomeItem>
+    );
   };
 
   return (

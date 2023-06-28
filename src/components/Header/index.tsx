@@ -55,7 +55,10 @@ const Header = (props: Props) => {
         <Text style={styles.title}>{props.title}</Text>
 
         {props.logout ? (
-          <Pressable hitSlop={20} onPress={props.logout?.onPress}>
+          <Pressable
+            style={styles.logout}
+            hitSlop={20}
+            onPress={props.logout?.onPress}>
             <Image
               style={styles.icon}
               source={require('../../assets/header/logout.png')}></Image>

@@ -15,9 +15,26 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Favorites from './src/screens/app/Favorites';
 import Home from './src/screens/app/Home';
 import Profile from './src/screens/app/Profile';
+import ProductDetails from './src/screens/app/ProductDetails';
+import Settings from './src/screens/app/Settings';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootStackParamList>();
+
+const ProfileStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name={ScreenNames.Profile}
+        component={Profile}
+        options={{headerShown: false}}></Stack.Screen>
+      <Stack.Screen
+        name={ScreenNames.Settings}
+        component={Settings}
+        options={{headerShown: false}}></Stack.Screen>
+    </Stack.Navigator>
+  );
+};
 
 const Tabs = () => {
   return (
@@ -34,7 +51,7 @@ const Tabs = () => {
             icon = focused
               ? require('./src/assets/tabs/favorite_active.png')
               : require('./src/assets/tabs/favorite.png');
-          } else if (route.name === ScreenNames.Profile) {
+          } else if (route.name === ScreenNames.ProfileStack) {
             icon = focused
               ? require('./src/assets/tabs/profile_active.png')
               : require('./src/assets/tabs/profile.png');
@@ -44,11 +61,12 @@ const Tabs = () => {
           return <Image source={icon} style={{width: 24, height: 24}} />;
         },
         headerShown: false,
+        tabBarShowLabel: false,
         tabBarStyle: {borderTopColor: colors.lightGrey},
       })}>
       <Tab.Screen name={ScreenNames.Home} component={Home} />
       <Tab.Screen name={ScreenNames.Favorites} component={Favorites} />
-      <Tab.Screen name={ScreenNames.Profile} component={Profile} />
+      <Tab.Screen name={ScreenNames.ProfileStack} component={ProfileStack} />
     </Tab.Navigator>
   );
 };
@@ -80,6 +98,10 @@ function App(): JSX.Element {
               <Stack.Screen
                 name={ScreenNames.Tabs}
                 component={Tabs}
+                options={{headerShown: false}}></Stack.Screen>
+              <Stack.Screen
+                name={ScreenNames.ProductDetails}
+                component={ProductDetails}
                 options={{headerShown: false}}></Stack.Screen>
             </>
           ) : (

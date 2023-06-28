@@ -21,4 +21,5 @@ export const styles = StyleSheet.create({
   space: {
     width: 24,
   },
+  logout: {},
 });

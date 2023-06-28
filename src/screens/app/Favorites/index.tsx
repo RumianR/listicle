@@ -25,8 +25,16 @@ type Props = {
 };
 
 const Favorites = ({navigation}: Props) => {
+  const onProductPress = (product: Product) => {
+    navigation.navigate(ScreenNames.ProductDetails, {product: product});
+  };
+
   const renderItem = ({item, index}: {item: Product; index: number}) => {
-    return <FavoriteItem {...item} onPress={() => {}}></FavoriteItem>;
+    return (
+      <FavoriteItem
+        {...item}
+        onPress={() => onProductPress(item)}></FavoriteItem>
+    );
   };
   return (
     <SafeAreaView style={styles.container}>

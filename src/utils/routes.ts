@@ -5,5 +5,8 @@ export enum ScreenNames {
   Home = 'Home',
   Favorites = 'Favorites',
   Profile = 'Profile',
+  ProfileStack = 'ProfileStack',
   Tabs = 'Tabs',
+  ProductDetails = 'ProductDetails',
+  Settings = 'Settings',
 }

@@ -2,38 +2,48 @@ export const products = [
   {
     id: 1,
     title: 'Loft Style Chair',
+    description:
+      'A stylish and modern chair with a loft-inspired design. It features a comfortable seat and sleek metal frame.',
     image:
       'https://grandrapidschair.com/wp-content/uploads/2016/01/250_Brady_Graphite_Honey-1.jpg',
     category: 1,
-    price: '$ 20.00',
+    price: '$20.00',
   },
   {
     id: 2,
     title: 'Wood Mini Table',
+    description:
+      'A compact and versatile table made of high-quality wood. It can be folded for easy storage and is perfect for small spaces.',
     image:
       'https://ii1.pepperfry.com/media/catalog/product/f/o/800x880/foldable-table-in-natural-colour-by-clasicraft-foldable-table-in-natural-colour-by-clasicraft-ahmtub.jpg',
     category: 2,
-    price: '$ 25.00',
+    price: '$25.00',
   },
   {
     id: 3,
     title: 'Luxe Yellow Armchair',
+    description:
+      'An elegant and luxurious armchair in a vibrant yellow color. It features a plush cushion and stylish design, adding a touch of sophistication to any room.',
     image:
       'https://www.woods-furniture.co.uk/images/products/standard/7706_8118.jpg',
     category: 3,
-    price: '$ 45.00',
+    price: '$45.00',
   },
   {
     id: 4,
     title: 'Cozy Armchair',
+    description:
+      'A cozy and comfortable armchair perfect for lounging. It has a soft cushion and a beautiful block print pattern that adds a touch of uniqueness.',
     image:
-      'https://cdn.shopify.com/s/files/1/0079/2539/9616/products/myakka-chairs-jalkamal-block-print-footstool-28730051264703_2000x.jpg?v=1629217511',
+      'https://cdn.shopify.com/s/files/1/0079/2539/9616/products/myakka-chairs-jalkamal-block-print-footstool-28730051264703_2000x.jpg',
     category: 3,
-    price: '$ 80.00',
+    price: '$80.00',
   },
   {
     id: 5,
     title: 'Velvet Sofa',
+    description:
+      'A luxurious velvet sofa that exudes elegance and comfort. It features a classic design, tufted detailing, and comes with multiple images showcasing its beauty.',
     image:
       'https://www.housingunits.co.uk/media/catalog/product/cache/60968cec045f20fb06ab5f7720001507/5/5/555685b1a8eecf2133f18451526a4ede.jpg',
     images: [
@@ -42,7 +52,7 @@ export const products = [
       'https://media.sofa.com/thumbor/unsafe/https%3A%2F%2Fmedia.sofa.com%2Fmedias%2FSS22-Homepage-Category-Tiles-1-SOFAS.jpg%3Fcontext%3DbWFzdGVyfHJvb3R8MTM1MzYyfGltYWdlL2pwZWd8aDUyL2g0ZC84OTk4ODEwNTgzMDcwLmpwZ3xjNWUzZDYzMjY2NGNhNWJkYjUwNjg4MDlkNzBiZTFlYmNiNmE1YWEyNDEwMTFhYWRlYTI0OGMwZGVlZTE1OWE1',
     ],
     category: 4,
-    price: '$ 120.00',
+    price: '$120.00',
   },
 ];
 
@@ -53,4 +63,5 @@ export type Product = {
   images?: string[]; // This is an optional property
   category: number;
   price: string;
+  description: string;
 };
